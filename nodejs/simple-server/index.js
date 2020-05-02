@@ -1,12 +1,10 @@
-const { createServer } = require("http");
+const express = require("express");
+const app = express();
 
-const requestListener = function (req, res) {
-  res.statusCode = 200;
-  res.setHeader("Content-Type", "text/html");
-  res.end("Hello, World!");
-};
+app.get("/", (req, res) => {
+  res.send("hello world");
+});
 
-const server = createServer(requestListener);
-server.listen(8080, "localhost", () => {
-  console.log("Server starter at 8080");
+app.listen(8080, () => {
+  console.log("server started");
 });
