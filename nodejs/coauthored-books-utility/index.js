@@ -1,4 +1,4 @@
-const { getAllArticles } = require("./clients/articles");
+const articlesClient = require("./clients/articles");
 const fs = require("fs");
 const path = require("path");
 
@@ -39,7 +39,7 @@ const getCoAuthorMatrix = (articlesByAuthor) => {
 };
 
 const generateArticleCoAuthorMatrix = async () => {
-  const articles = await getAllArticles();
+  const articles = await articlesClient.getAllArticles();
   const articlesByAuthor = getArticlesByAuthor(articles);
   const matrix = getCoAuthorMatrix(articlesByAuthor);
   const outputPath = path.resolve(__dirname, "./out.txt");
